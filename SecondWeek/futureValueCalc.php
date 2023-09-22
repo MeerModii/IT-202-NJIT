@@ -25,7 +25,7 @@
 
     <form action="futureValueCalcLogic.php" method="post">
         <label>Investment:</label>
-        <input type="text" name = "investment" value = "<?php echo htmlspecialchars($investment); ?>"/>
+        <input type="text" name = "investment" />
         <br>
         <label>Intrest Rate:</label>
         <input type="text" name = "intrestRate" value = "<?php echo htmlspecialchars($intrestRate); ?>">
