@@ -1,3 +1,5 @@
+/* <!-- BY: Meer Modi | October 6, 2023 | IT 202 005 | Assignment Unit 03 --> */
+
 body {
     background-image: url('Images/NutsBGImageAI.jpg');
     background-size: cover;
@@ -95,13 +97,16 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 button:hover {
 box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
-footer {
+/* footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 50px 30px;
-}
+    padding: 50px 1%;
+} */
 #footer{
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
     font-family:'Chakra Petch', sans-serif;
     font-size: 17px;
 }
@@ -112,8 +117,79 @@ footer {
     color: rgb(63, 145, 221)
 }
 body {
-    overflow: hidden; /* Hide scrollbars */
+    overflow: hidden;
 }
-p{
-    display:inline-block;
+form{
+    padding-top: 2%;
+}
+form label {
+    padding-top: 1.5%;
+    font-family:'Chakra Petch', sans-serif;
+    font-size: 20px;
+    padding-left: 15%;
+    display: inline-block;
+    width: 200px;
+    text-align: left;
+}
+form input {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 20px;
+    width: 200px; 
+}
+#submit_buttom{
+    font-family: 'Black Ops One', cursive;
+    font-size: 20px;
+    width: 100px;
+}
+.footershopping{
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+}
+#errormessage{
+    padding-left: 15%;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 17px;
+    color: rgb(255, 2, 2);
+    padding-right: 50%;
+}
+.left-section {
+    width: 50%; 
+    float: left; 
+    padding: 20px; 
+}
+right-section{
+    width: 50%; 
+    float: right; 
+    padding: 20px; 
+}
+
+#barcodeimg{
+    padding-left: 5%;
+    padding-right: 10%;
+    padding-top: 2%;
+    height: 150px;
+    width: 500px;
+}
+
+.labelcontent{
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 19px;
+    padding-left: 5%;
+    padding-right: 10%;
+}
+span span{
+    color: rgb(29, 255, 4);
+}
+#upslogoimg{
+    padding-left: 1.5%;
+    padding-right: 7%;
+    height: 150px;
+    width: 250px;
+}
+#barcodesq{
+    padding-left: 1%;
+    padding-right: 1%;
+    height: 150px;
+    width: 150px;
 }

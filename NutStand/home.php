@@ -1,3 +1,4 @@
+<!-- BY: Meer Modi | October 6, 2023 | IT 202 005 | Assignment Unit 03 -->
 <html>
     <head>
         <title>Nut Bazar</title>
@@ -37,8 +38,8 @@
                 <button><a href = "shopping.php">Begin Shopping</a></button>
             </div>
         </main>
-        <footer>
-            <span id = "footer">Email: <a href = "nutbazar@proton.me">nutbazar@proton.me</a> | Phone: (908) 888-8888</span>
+        <footer class="footer-margin">
+            <span id = "footer">Email:<a href = "nutbazar@proton.me"> nutbazar@proton.me</a> &nbsp;| Phone: (908) 888-8888</span>
         </footer>
         </div>
     </body>
