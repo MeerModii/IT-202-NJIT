@@ -69,6 +69,14 @@
                                 <td><?php echo $product['productCode']; ?></td>
                                 <td><?php echo $product['productName']; ?></td>
                                 <td><?php echo $product['listPrice']; ?></td>
+                                <td>
+                                    <form action = "deleteProduct.php" method="post">
+                                        <input type="hidden" name="product_id" value="<?php echo $product['productID']; ?>" />
+                                        <input type="hidden" name="category_id" value="<?php echo $product['categoryID']; ?>" />
+                                        <input type = "submit" value="Delete" />
+
+                                    </form>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                 </table>
