@@ -70,7 +70,7 @@
 ?>
 <html>
     <head>
-        <title>Nut Bazar</title>
+        <title>Shopping</title>
         <meta charset="utf-8"/>
         <!-- Linking CSS -->
         <link rel="stylesheet" href="nutStandStyle.css"/>
@@ -87,11 +87,12 @@
     <body>
         <header>
             <ul id = "iconNav">
-                <a href = "home.php"><i class="fa-regular fa-paper-plane fa-2xl"></i></a>
+                <a href = "homee.php"><i class="fa-regular fa-paper-plane fa-2xl"></i></a>
             </ul>
             <ul id = "pageNav">
-                <li><a href = "home.php"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href = "homee.php"><i class="fa-solid fa-house"></i> Home</a></li>
                 <li id = "top"><a href = "shopping.php"><i class="fa-solid fa-cart-shopping"></i> Shopping</a></li>
+                <li id = "top"><a href = "nutinfo.php"><i class="fa-solid fa-table"></i> Nuts</a></li>
             </ul>
         </header>
         <main>
