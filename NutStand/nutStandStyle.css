@@ -193,3 +193,25 @@ span span{
     height: 150px;
     width: 150px;
 }
+table, td {
+    border: 1px dashed rgb(255, 255, 255);
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 24px;
+    color: rgb(255, 253, 253);
+    border-collapse: collapse;
+}
+td,th {
+    background-color: rgba(0, 0, 0, 0.664);
+}
+th{
+    color: #08ff5a;
+    /* background-color: rgba(0, 0, 0, 0.445); */
+
+}
+table {
+    margin: 0 auto; 
+    width: 50%;
+}
+table td {
+    text-align: center;
+}

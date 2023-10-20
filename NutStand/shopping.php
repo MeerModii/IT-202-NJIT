@@ -92,7 +92,7 @@
             <ul id = "pageNav">
             <li><a href = "homee.php"><i class="fa-solid fa-house"></i> Home</a></li>
                 <li id = "top"><a href = "shopping.php"><i class="fa-solid fa-cart-shopping"></i> Shopping</a></li>
-                <li id = "top"><a href = "nutinfo.php"><i class="fa-solid fa-table"></i> Nuts</a></li>
+                <li id = "top"><a href = "nutinfo.php"><i class="fa-solid fa-database"></i> Nuts</a></li>
             </ul>
         </header>
         <main>
