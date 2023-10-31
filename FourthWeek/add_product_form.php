@@ -18,7 +18,7 @@
                 <?php foreach($categories as $category) : ?>
                 <option value = "<?php echo $category['categoryID']; ?>">
                     <?php echo $category['categoryName']; ?>
-                </option>
+                </option>   
                 <?php endforeach; ?>
             </select>
             <br>
