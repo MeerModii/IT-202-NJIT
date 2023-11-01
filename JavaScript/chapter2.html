@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+    <body>  
+        <h1>
+            <noscript>
+                <h2>Please enable JavaScript</h2>
+            </noscript>
+            <script>    
+                document.write("JS enabled");
+                let name = "Joseph";
+                console.log(name);
+                let age = 50;
+                console.log("Age = " + age);
+                const count = 1;
+                //Cannot do count = count + 1 because its a final variable
+                console.log("Count = " + count);
+                const length = 7;
+                const width = 5;
+                const perme = length * width;
+                console.log(perme);
+
+                // How to deal with floting point erros 
+                const subtotal = 59.95
+                const salesTax = subtotal * 0.1;
+                console.log(salesTax);
+                // This is a string
+                console.log(salesTax.toFixed(14)); 
+                parseFloat(salesTax);
+
+                const fullname = name + ", " + age;
+                console.log(fullname);
+
+                const secondfullname = `${name}, ${age}`;
+                console.log(secondfullname);
+
+                // Window object consists of a alert function whcih can show a pop up on the browser
+                window.alert("There is an error. Please try again");
+                const underEntry = window.prompt("This is a test of the prompt method", 100);
+
+            </script>
+        </h1>
+    </body>
+</html>

@@ -5,6 +5,32 @@
     $statement->execute();
     $categories = $statement->fetchAll();
     $statement->closeCursor();
+
+    $nutCode = '';
+    $nutName = '';
+    $nutDescription = '';
+    $nutPrice = '';
+    $error_message = '';
+
+    $nutCategoryName = htmlspecialchars($_POST('nutCategoryName'));
+    $nutCode = filter_input(INPUT_POST, 'nutCode', FILTER_VALIDATE_INT);
+    $nutName = htmlspecialchars(filter_input(INPUT_POST, 'nutName'));
+    $nutDescription = htmlspecialchars(filter_input(INPUT_POST,'nutDescription'));
+    $nutPrice = filter_input(INPUT_POST, 'nutPrice', FILTER_VALIDATE_FLOAT);
+
+    if($nutPrice === false || $nutPrice < 0 || $nutPrice > 100 || empty($nutPrice)){
+        $error_message = "Invalid Nut Price";
+    }
+    if($nutCode === false || empty($nutCode)){
+        $error_message = "Invalid Nut Code";
+    }
+    if($nutName === false || empty($nutName)){
+        $error_message = "Invalid Nut Name";
+    }
+    if($nutDescription === false || empty($nutDescription)){
+        $error_message = "Invalid Description";
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,24 +76,43 @@
             <br>
 
             <label>Nut Code: </label>
-            <input type="number" name="nutCode" ?>
+            <input type="number" name="nutCode" value = "<?php echo htmlspecialchars($nutCode); ?>">
             <br>
 
             <label>Nut Name: </label>
-            <input type="text" name="nutName" ?>
+            <input name="nutName" value = "<?php echo htmlspecialchars($nutName); ?>">
             <br>
   
             <label>Nut description: </label>
-            <input type="text" name="nutDescription" ?>
+            <textarea type="text" rows = '4' cols = '50' name="nutDescription" value = "<?php echo htmlspecialchars($nutDescription); ?>"></textarea>
             <br>
 
             <label>Nut Price: </label>
-            <input type="text" name="nutPrice" ?>
+            <input type="number" step="any"name="nutPrice" value = "<?php echo htmlspecialchars($nutPrice); ?>">
             <br>
 
             <label><input type="Submit" value = "Push"/></label>
         </form>
+
+        <?php 
+        if(!empty($error_message)){?>
+        <p id = "errormessage"><?php echo htmlspecialchars($error_message);?></p>
+        <?php }?>
         </div>
+
+        <div class="right-section">
+
+        <?php 
+        if(empty($error_message)){
+            require_once("nutsdatabase.php");
+            $query = "INSERT INTO nutCategory(nutCategoryID,nutCode,nutName,description, price, dateAdded) 
+                                        VALUES(:nutCategoryID, :nutCode, :nutName, :nutDescription, :nutPrice, ";
+        }
+        ?>
+
+        </div>
+
+        </main>
         <footer class="footer-margin">
             <span id="footer">Email:<a href="nutbazar@proton.me"> nutbazar@proton.me</a> &nbsp;| Phone: (908) 888-8888</span>
         </footer>
