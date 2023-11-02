@@ -1,23 +1,37 @@
 <?php 
-    require('nutsdatabase.php');
+    require_once('nutsdatabase.php');
     $query = 'SELECT * FROM nutCategory ORDER BY nutCategoryID';
     $statement = $database->prepare($query);
     $statement->execute();
     $categories = $statement->fetchAll();
     $statement->closeCursor();
 
+    $nutCategoryID = '';
     $nutCode = '';
     $nutName = '';
     $nutDescription = '';
     $nutPrice = '';
     $error_message = '';
 
-    $nutCategoryName = htmlspecialchars($_POST('nutCategoryName'));
+    $nutCategoryID = filter_input(INPUT_POST, 'nutCategoryName');
     $nutCode = filter_input(INPUT_POST, 'nutCode', FILTER_VALIDATE_INT);
     $nutName = htmlspecialchars(filter_input(INPUT_POST, 'nutName'));
     $nutDescription = htmlspecialchars(filter_input(INPUT_POST,'nutDescription'));
     $nutPrice = filter_input(INPUT_POST, 'nutPrice', FILTER_VALIDATE_FLOAT);
 
+    $query = "SELECT nutCode FROM nuts";
+    $statement = $database->prepare($query);
+    $statement->execute();
+    $codes = $statement->fetchAll();
+    $statement->closeCursor();
+
+    for ($i = 0; $i < sizeof($codes); $i++) {
+        if ($codes[$i][0] == $nutCode) {
+            $error_message = "Invalid nutCode";
+        } else {
+        }
+    }
+    
     if($nutPrice === false || $nutPrice < 0 || $nutPrice > 100 || empty($nutPrice)){
         $error_message = "Invalid Nut Price";
     }
@@ -30,6 +44,17 @@
     if($nutDescription === false || empty($nutDescription)){
         $error_message = "Invalid Description";
     }
+
+    $query = "SELECT nutCategoryID FROM nutCategory WHERE nutCategoryName = :nutCategoryID";
+    $statement = $database->prepare($query);
+    $statement->bindValue(':nutCategoryID', $nutCategoryID);
+    $statement->execute();
+    $nutCategoryID = $statement->fetch();
+    
+    if(!empty($nutCategoryID )){
+        $nutCategoryID = $nutCategoryID[0];
+    }
+    $statement->closeCursor();
 
 ?>
 <!DOCTYPE html>
@@ -82,10 +107,12 @@
             <label>Nut Name: </label>
             <input name="nutName" value = "<?php echo htmlspecialchars($nutName); ?>">
             <br>
-  
-            <label>Nut description: </label>
-            <textarea type="text" rows = '4' cols = '50' name="nutDescription" value = "<?php echo htmlspecialchars($nutDescription); ?>"></textarea>
             <br>
+
+            <label>Nut description: </label>
+            <textarea name="nutDescription"><?php echo htmlspecialchars($nutDescription); ?></textarea>
+            <br>
+
 
             <label>Nut Price: </label>
             <input type="number" step="any"name="nutPrice" value = "<?php echo htmlspecialchars($nutPrice); ?>">
@@ -95,18 +122,33 @@
         </form>
 
         <?php 
-        if(!empty($error_message)){?>
-        <p id = "errormessage"><?php echo htmlspecialchars($error_message);?></p>
-        <?php }?>
+            if (!empty($error_message)) {
+            echo '<p id="errormessage">' . htmlspecialchars($error_message) . '</p>';
+            }
+        ?>
+
         </div>
 
         <div class="right-section">
 
         <?php 
+        $dateAdded = date("Y-m-d H:i:s");
         if(empty($error_message)){
             require_once("nutsdatabase.php");
-            $query = "INSERT INTO nutCategory(nutCategoryID,nutCode,nutName,description, price, dateAdded) 
-                                        VALUES(:nutCategoryID, :nutCode, :nutName, :nutDescription, :nutPrice, ";
+            $query = "INSERT INTO nuts(nutCategoryID, nutCode, nutName, description, price, dateAdded) 
+            VALUES(:nutCategoryID, :nutCode, :nutName, :nutDescription, :nutPrice, :dateAdded)";            
+            $statement = $database->prepare($query);
+            $statement->bindValue(":nutCategoryID", $nutCategoryID);
+            $statement->bindValue(":nutCode", $nutCode);
+            $statement->bindValue(":nutName", $nutName);
+            $statement->bindValue(":nutDescription", $nutDescription);
+            $statement->bindValue(":nutPrice", $nutPrice);
+            $statement->bindValue(":dateAdded", $dateAdded);
+            $statement->execute();
+            $statement->closeCursor();
+
+            echo '<p id="errormessage">' ." Data added successfully" . '</p>';
+
         }
         ?>
 

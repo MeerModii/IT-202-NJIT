@@ -139,7 +139,7 @@ form input {
 #submit_buttom{
     font-family: 'Black Ops One', cursive;
     font-size: 20px;
-    width: 100px;
+    width: 50px;
 }
 .footershopping{
     position: fixed;
@@ -214,4 +214,15 @@ table {
 }
 table td {
     text-align: center;
+}
+
+textarea {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 20px;
+    width: 200px; 
+}
+select{
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 20px;
+    width: 200px; 
 }
