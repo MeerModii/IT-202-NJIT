@@ -1,0 +1,61 @@
+<html>
+    <body>
+        <h4>Change the color of the first paragraph element:</h4>
+        <p>This is a paragraph element.</p>
+        <p>Change the color of elements with id and class attributes.</p>
+        <p id = "rate">This is a p element with id rate</p>
+        <p class = "error">This is a p element with class error</p>
+        <script>
+            const confirmDelete = confirm("Are you sure you want to delete");
+            if(confirmDelete){
+                console.log("Deleted");
+            }
+            else{
+                console.log("Not deleted");
+            }
+            document.querySelector("p").style.color = "red";
+            document.querySelector("#rate").style.color = "green";
+            document.querySelector(".error").style.color = "blue";
+            const nodeList = document.querySelectorAll("p");
+            for(let i=0; i<nodeList.length; i++){
+                nodeList[i].style.backgroundColor = "yellow";
+            }
+            const today = new Date();
+            document.write(today.toDateString() + "<br>");
+            
+            function showYear(){
+                const today = new Date();
+                document.write(today.getFullYear() + "is the year ");
+            }
+            showYear();
+
+            const calculateTax = function(subtotal, taxrate){
+                const tax = subtotal*taxrate;
+                return tax.toFixed(2);
+            }
+            const salesTax = calculateTax(85,0.05);
+            document.write(salesTax);
+
+            const getCurrentURL = () =>{
+                return document.location.href;
+            }
+            document.write(getCurrentURL());
+
+            function local(){
+                // Anything here is local 
+                for(var i=0; i<5; i++){ // function score with var so you can access it anythewre within the function
+                    console.log("var i = " + i);
+                }
+                console.log(i);
+
+                for (let j=0; j<5; j++){
+                    console.log("j = " + j);
+                }
+                console.log(j);
+
+            }
+            local();
+
+        </script>
+    </body>
+</html>

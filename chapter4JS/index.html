@@ -1,0 +1,25 @@
+<html>
+    <body>
+        <!-- Difference is that we have added the id button -->
+        <form action = "validate_age.php" method = "get">
+            <label>Age:</label>
+            <input type = "text" name = "age" id = "age"/>
+            <input type = "submit" id = "submit_button"/>
+        </form>
+        <script>
+            const checkAge = (event) =>{
+                const ageElement = document.querySelector("#age");
+                const age = parseInt(ageElement.value);
+                if(isNaN(age) || age <= 0){
+                    alert("age is invalid");
+                    event.preventDefault();
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded",
+            () => {
+                document.querySelector("#submit_button").addEventListener("click", checkAge);
+            });
+        </script>
+    </body>
+</html>

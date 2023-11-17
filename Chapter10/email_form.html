@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <form id = "email_form" action = "join.php" method = "get">
+            <label>Email Address</label>
+            <input type = "email" id = "email_address" name = "email_address" autofocus required>
+            <br>
+            <label>Name</label>
+            <input type = "text" id = "name" name = "name" required>
+            <br>
+            <label>Phone Number</label>
+            <input type = "tel" id = "phone_number" name = "phone_number" placeholder="999-999-9999" 
+                            required pattern = "\d{3}[\-]\d{3}[\-]\d{4}" title = "Must be in 999-999-9999 Format">
+            <br>
+            <input type = "submit">
+
+
+        </form>
+    </body>
+</html>

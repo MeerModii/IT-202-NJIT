@@ -1,0 +1,41 @@
+<html>
+    <body>
+        <form>
+            <label>Invstment Amount: </label>
+            <input type="text" name="invstment" id="invstment"/>
+            <br>
+            <label>Yearly Interest Rate:</label>
+            <input type="text" name="interest" id="interest" value = "6.5%" />
+            <br>    
+            <label>Years:</label>
+            <input type="text" name="years" id="years" />
+            <br>
+            <input type = "submit" value="Submit"/>
+        </form>
+
+        <script>
+            const investmentChange = () =>{
+                const invstment = document.querySelector("#invstment");
+                console.log(invstment.value);
+            }
+            const yearsDblclick = () =>{
+                const years = document.querySelector("years");
+                console.log(years.value);
+            }
+            document.addEventListener("DOMContentLoaded",() => 
+            {
+            document.querySelector("#interest").disabled = true; 
+            document.querySelector("#invstment").addEventListener("change", investmentChange);
+            document.querySelector("#years").addEventListener("dblclick",yearsDblclick);
+            const X = 15;
+const Y = 3;
+const Z = 2;
+const result = X % Y * Z; 
+console.log(result);
+        
+            });
+            
+
+        </script>
+    </body>
+</html>

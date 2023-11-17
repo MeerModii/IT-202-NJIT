@@ -1,0 +1,80 @@
+<html>
+    <body>
+        <span><b>Welcome </b><u>Back</u><i> Sam!</i></span>
+    <script>
+        const span = document.querySelector('span');
+        console.log(span);
+        console.log("Span = " + span);
+        const boldElement = span.firstChild;
+        console.log(boldElement );
+        console.log("boldElement = " + boldElement.nodeValue);
+        const boldElementText = span.firstChild.firstChild;
+        console.log(boldElementText);
+        console.log("boldElementText = " + boldElementText.nodeValue);
+
+        //Underlined HTML
+        const underlinedElement = span.firstChild.nextSibling;
+        console.log(underlinedElement);
+        console.log("underlinedElement = " + underlinedElement); // Tells data type
+        const underlinedElementText = span.firstChild.nextSibling.firstChild;
+        console.log(underlinedElementText);
+        console.log("underlinedElementText = " + underlinedElementText.nodeValue);
+
+
+        // Italics HTML 
+        const italicElement = span.lastChild;
+        console.log(italicElement);
+        const italicElementText = span.lastChild.firstChild;
+        console.log(italicElementText);
+        const italicElementText2 = italicElement.firstChild.nodeValue;
+        console.log(italicElementText2);
+
+        //Everyyhing
+        const spanText = span.textContent;
+        console.log(spanText);
+        span.firstChild.textContent = "Hello ";
+        console.log(span.textContent);
+        span.textContent = "JS chapter 6 examples ";
+    </script>
+    <ul id ="imglst">
+        <li><img id = "imgA" src = "lion.jpg" width="200" height="150"/></li>
+        <li><img id = "imgB" src = "tiger.jpg" width="200" height="150"/></li>
+        <li><img id = "imgC" src = "lion.jpg" width="200" height="150"/></li>
+    </ul>
+
+    <script>
+        const list = document.querySelector("#imglst");
+        const items = document.querySelectorAll("li");
+
+        for(let item of items){
+            let imageElement = item.firstChild;
+            console.log(imageElement.src);
+            console.log(imageElement.id);
+        }
+
+        const imageCElection = document.querySelector("#imgC");
+        console.log(imageCElection.getAttribute("src"));
+        imageCElection.setAttribute("src", "puma.jpg");
+    </script>
+
+    <style>
+        .blue{
+            color:blue;
+        }
+        .red{
+            color: red;
+        }
+    </style>
+
+    <h2>Welcome to the website</h2>
+
+    <script>
+        const heading2 = document.querySelector("h2")
+        heading2.classList.add("blue");
+        heading2.classList.replace("red");
+        heading2.classList.remove("red");
+        console.log(heading2);
+
+    </script>
+    </body>
+</html>
