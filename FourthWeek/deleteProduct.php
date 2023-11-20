@@ -13,6 +13,4 @@
 
         echo "<p>Deleetion was successful</P>";
     }
-
-
 ?>

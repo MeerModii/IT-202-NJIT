@@ -1,6 +1,13 @@
 <!-- BY: Meer Modi | October 6, 2023 | IT 202 005 | Assignment Unit 03 -->
 <?php
 
+session_start();
+
+if (!isset($_SESSION['emailAddress'])) {
+    header("Location: login.php");
+    exit();
+}
+
     // Set default values for initial page load
     $firstlastname = '';
     $ordernumber = '';
@@ -89,13 +96,23 @@
             <ul id = "iconNav">
                 <a href = "homee.php"><i class="fa-regular fa-paper-plane fa-2xl"></i></a>
             </ul>
-            <ul id = "pageNav">
-            <li><a href = "homee.php"><i class="fa-solid fa-house"></i> Home</a></li>
-                <li id = "top"><a href = "shopping.php"><i class="fa-solid fa-cart-shopping"></i> Shopping</a></li>
-                <li id = "top"><a href = "nutinfo.php"><i class="fa-solid fa-database"></i> Nuts</a></li>
-                <li id="top"><a href="create.php"><i class="fa-solid fa-plus"></i> Create</a></li>
+            <ul id="pageNav">
+                <li><a href="homee.php"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="shopping.php"><i class="fa-solid fa-cart-shopping"></i> Shopping</a></li>
+                <li><a href="nutinfo.php"><i class="fa-solid fa-database"></i> Nuts</a></li>
+                <li><a href="create.php"><i class="fa-solid fa-plus"></i> Create</a></li>
 
+                <?php
+                // Display "Logout" or "Login" link based on user's login status
+                if (isset($_SESSION['emailAddress'])) {
+                    echo '<li id="top">Welcome ' . $_SESSION['firstName'] . ' ' . $_SESSION['lastName'] . ' (' . $_SESSION['emailAddress'] . ')</li>';
+                    echo '<li id="top"><a href="logout.php"><i class="fa-solid fa-right-to-bracket"></i> Logout</a></li>';
+                } else {
+                    echo '<li id="top"><a href="login.php"><i class="fa-solid fa-right-to-bracket"></i> Login</a></li>';
+                }
+                ?>
             </ul>
+
         </header>
         <main>
         <div class="left-section">
