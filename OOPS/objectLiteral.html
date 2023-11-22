@@ -1,0 +1,30 @@
+<html>
+    <body>
+        <script>
+            const invoice = {
+                taxrate: 0.0875,
+                getTotal(subtotal){
+                    const salesTax = subtotal * this.taxrate;
+                    return subtotal + salesTax;
+                },
+                terms:{
+                    dueDays: 30,
+                    description: "Net Due 30 days"
+                },
+                getTax: function(subtotal){
+                    return subtotal + taxrate;
+                }
+            }
+            const total = invoice.getTotal(100);
+            document.write(total);
+            document.write("<br>");
+            document.write(invoice.terms.dueDays);
+            document.write("<br>");
+            document.write(invoice.terms.description);
+            document.write("<br>");
+            const tax = invoice.getTax(50);
+            document.write(tax);
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+    <body>
+        <script>
+            class Invoice{
+                constructor(subtotal, taxRate){
+                    this.subtotal = subtotal;
+                    this.taxRate = taxRate;
+                }
+                getTotal(){
+                    const salesTax = this.subtotal * this.taxRate;
+                    return this.subtotal + salesTax;
+                }
+            
+            }
+            const invoice1 = new Invoice(100,0.0875);
+            const invoice2 = new Invoice(1000,0.07);
+            document.write(invoice1.getTotal());
+            document.write("<br>");
+            document.write(invoice2.getTotal());
+        </script>
+    </body>
+</html>
