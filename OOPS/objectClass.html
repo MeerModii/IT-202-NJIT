@@ -17,6 +17,31 @@
             document.write(invoice1.getTotal());
             document.write("<br>");
             document.write(invoice2.getTotal());
+
+
+            class Person{
+                constructor(firstname, lastname){
+                    this.firstname = firstname;
+                    this.lastname = lastname;
+                }
+                get fullName(){
+                    return this.firstname + " " + this.lastname;
+                }
+
+            }
+            const person = new Person("gravc", "local");
+            document.write(person.fullName());
+            class Employee extends Person{
+                constructor(firstname, lastname, hiredate){
+                    super(firstname, lastname);
+                    this.hiredate = hiredate;
+                }
+                
+            }
+            const emp = new Employee("gravc", "local", new Date("11/1/2023"));
+            document.write(emp.fullName());
+            document.write(person.fullName());
+
         </script>
     </body>
 </html>
