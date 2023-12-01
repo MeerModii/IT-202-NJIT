@@ -1,5 +1,4 @@
 <?php
-// Include the database connection code if necessary
 session_start();
 
 if (!isset($_SESSION['emailAddress'])) {
@@ -104,12 +103,13 @@ foreach ($nutInfo as $nut) {
                     echo '<tr>';
                     
                     echo '<td>' . (isset($arrayCategoryname[$i]) ? $arrayCategoryname[$i] : '') . '</td>';
-                    echo '<td>' . $arrayNutCode[$i] . '</td>';
+                    echo '<td><a href="nut_details.php?nut_id=' . $nut['nutID'] . '">' . $nut['nutCode'] . '</a></td>';
                     echo '<td>' . $arrayNutName[$i] . '</td>';
                     echo '<td>' . $arrayNutDesc[$i] . '</td>';
                     echo '<td>' . "$ " . $arrayNutPrice[$i] . '</td>';
-                    echo '<td>
-                            <form method="post" action="delete.php">
+                    echo 
+                        '<td>
+                            <form method="post" action="delete.php" onsubmit="return confirmDelete()">
                                 <input type="hidden" name="nutId" value="' . $arrayNutCode[$i] . '">
                                 <input type="submit" value="Delete">
                             </form>
@@ -119,6 +119,11 @@ foreach ($nutInfo as $nut) {
                 }
                 ?>
             </table>
+            <script>
+                function confirmDelete() {
+                    return confirm("Are you sure you want to delete this record?");
+                }
+            </script>
         </main>
         <footer class="footer-margin">
             <span id="footer">Email:<a href="nutbazar@proton.me"> nutbazar@proton.me</a> &nbsp;| Phone: (908) 888-8888</span>

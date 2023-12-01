@@ -50,7 +50,7 @@ require_once("nutsdatabase.php");
         $error_message = "Invalid Nut Name";
     }
     if($nutDescription === false || empty($nutDescription)){
-        $error_message = "Invalid Description";
+        $error_message = " ";
     }
 
     $query = "SELECT nutCategoryID FROM nutCategory WHERE nutCategoryName = :nutCategoryID";
@@ -78,6 +78,55 @@ require_once("nutsdatabase.php");
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get references to form elements
+            var nutCategoryNameSelect = document.querySelector('[name="nutCategoryName"]');
+            var nutCodeInput = document.querySelector('[name="nutCode"]');
+            var nutNameInput = document.querySelector('[name="nutName"]');
+            var nutDescriptionTextarea = document.querySelector('[name="nutDescription"]');
+            var nutPriceInput = document.querySelector('[name="nutPrice"]');
+            var createForm = document.querySelector('form');
+
+            createForm.addEventListener('submit', function (event) {
+                if (nutCategoryNameSelect.value.trim() === '') {
+                    alert('Please select a Nut Category.');
+                    event.preventDefault();
+                    return;
+                }
+                if (nutCodeInput.value.trim() === '' || nutCodeInput.value.length < 4 || nutCodeInput.value.length > 10) {
+                    alert('Invalid Nut Code. It should not be blank and must have 4 to 10 characters.');
+                    event.preventDefault();
+                    return;
+                }
+                if (nutNameInput.value.trim() === '' || nutNameInput.value.length < 10 || nutNameInput.value.length > 100) {
+                    alert('Invalid Nut Name. It should not be blank and must have 10 to 100 characters.');
+                    event.preventDefault();
+                    return;
+                }
+                if (nutDescriptionTextarea.value.trim() === '' || nutDescriptionTextarea.value.length < 10 || nutDescriptionTextarea.value.length > 255) {
+                    alert('Invalid Nut Description. It should not be blank and must have 10 to 255 characters.');
+                    event.preventDefault();
+                    return;
+                }
+                var nutPriceValue = parseFloat(nutPriceInput.value);
+                if (nutPriceInput.value.trim() === '' || isNaN(nutPriceValue) || nutPriceValue <= 0 || nutPriceValue > 100000) {
+                    alert('Invalid Nut Price. It should not be blank, should be a positive number, and must not exceed $100,000.');
+                    event.preventDefault();
+                    return;
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var createForm = document.querySelector('form');
+            var resetButton = document.getElementById('resetButton');
+
+            resetButton.addEventListener('click', function () {
+                createForm.reset();
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="home-background">
@@ -92,7 +141,6 @@ require_once("nutsdatabase.php");
                 <li><a href="create.php"><i class="fa-solid fa-plus"></i> Create</a></li>
 
                 <?php
-                // Display "Logout" or "Login" link based on user's login status
                 if (isset($_SESSION['emailAddress'])) {
                     echo '<li id="top">Welcome ' . $_SESSION['firstName'] . ' ' . $_SESSION['lastName'] . ' (' . $_SESSION['emailAddress'] . ')</li>';
                     echo '<li id="top"><a href="logout.php"><i class="fa-solid fa-right-to-bracket"></i> Logout</a></li>';
@@ -106,24 +154,22 @@ require_once("nutsdatabase.php");
         <main>
         <div class="left-section">
         <form method="post">
-
-
             <label>Nut Category: </label>
-            <select name = "nutCategoryName">
-                <?php foreach($categories as $category) : ?>
-                <option value = "<?php echo $category['nutCategoryName']; ?>">
-                    <?php echo $category['nutCategoryName']; ?>
-                </option>
+            <select name="nutCategoryName">
+                <?php foreach ($categories as $category) : ?>
+                    <option value="<?php echo $category['nutCategoryName']; ?>">
+                        <?php echo $category['nutCategoryName']; ?>
+                    </option>
                 <?php endforeach; ?>
             </select>
             <br>
 
             <label>Nut Code: </label>
-            <input type="number" name="nutCode" value = "<?php echo htmlspecialchars($nutCode); ?>">
+            <input type="number" name="nutCode" value="<?php echo htmlspecialchars($nutCode); ?>">
             <br>
 
             <label>Nut Name: </label>
-            <input name="nutName" value = "<?php echo htmlspecialchars($nutName); ?>">
+            <input name="nutName" value="<?php echo htmlspecialchars($nutName); ?>">
             <br>
             <br>
 
@@ -131,13 +177,15 @@ require_once("nutsdatabase.php");
             <textarea name="nutDescription"><?php echo htmlspecialchars($nutDescription); ?></textarea>
             <br>
 
-
             <label>Nut Price: </label>
-            <input type="number" step="any"name="nutPrice" value = "<?php echo htmlspecialchars($nutPrice); ?>">
+            <input type="number" step="any" name="nutPrice" value="<?php echo htmlspecialchars($nutPrice); ?>">
             <br>
 
-            <label><input type="Submit" value = "Push"/></label>
+            <label><input type="Submit" value="Push" /></label>
+            <input type="reset" id="resetButton" value="Reset">
+
         </form>
+        
 
         <?php 
             if (!empty($error_message)) {

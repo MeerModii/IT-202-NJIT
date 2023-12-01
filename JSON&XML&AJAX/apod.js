@@ -24,6 +24,46 @@ const displayData = data =>{
     h3.appendChild(title);
     display.appendChild(h3);
 
+    switch(data.media_type){
+        case "image":
+            const img = document.createElement("img");
+            img.setAttribute("src", data.hdurl);
+            img.setAttribute('width', 640);
+            img.setAttribute('alt', 'NASA photo');
+            display.appendChild(img);
+            break;
+        case "video":
+            const iframe = document.createElement("iframe");
+            iframe.setAttribute("src", data.url);
+            iframe.setAttribute('width', 640);
+            iframe.setAttribute('height', 360);
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allowfullscreen', 'true');
+            display.appendChild(iframe);
+            break;
+        default:
+            break;
+    }
+
+    const div = document.createElement('div');
+    const date = document.createTextNode(data.date);
+    div.appendChild(date);
+    
+    if(data.copyright) {
+      const span = document.createElement('span');
+      span.setAttribute('class', 'right');
+      const text = document.createTextNode("Copyright " + data.copyright);
+      span.appendChild(text);
+      div.appendChild(span);
+    }
+    display.appendChild(div);
+
+    const p = document.createElement('p');
+    const explanation = document.createTextNode(data.explanation);
+    p.appendChild(explanation);
+    display.append(p);
+
+
 }
 
 const displayPicture = data =>{

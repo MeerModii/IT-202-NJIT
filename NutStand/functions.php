@@ -1,4 +1,5 @@
 <?php
+
 function add_nut_manager($email, $password, $firstName, $lastName) {
     global $database;
 
@@ -21,7 +22,7 @@ function checkLoginCredentials($enteredEmail, $enteredPassword) {
     $statement = $database->prepare($query);
     $statement->bindValue(':email', $enteredEmail);
     $statement->execute();
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    $user = $statement->fetch();
 
     // Check if user exists and the entered password is valid
     if ($user && password_verify($enteredPassword, $user['password'])) {
@@ -37,7 +38,7 @@ function getUserDetails($email) {
     $statement = $database->prepare($query);
     $statement->bindValue(':email', $email);
     $statement->execute();
-    $userDetails = $statement->fetch(PDO::FETCH_ASSOC);
+    $userDetails = $statement->fetch();
     $statement->closeCursor();
 
     return $userDetails;
