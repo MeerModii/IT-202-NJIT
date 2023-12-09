@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Final Review</title>
+    </head>
+    <body>
+        <main>
+            <!-- Question 1 -->
+            <!-- <h1>Area of rectangle</h1>
+            <script>
+                let userIn = prompt('Height: ', 100);
+                let secondIn = prompt('Width: ', 100);
+                const area = userIn * secondIn;
+                document.write(area);
+            </script> -->
+
+            <!-- Question 2 -->
+            <!-- <form>
+                <label>Your Input: </label>
+                <input type="text" name="Userin" id = "Userin" value = "100">
+                <input type="submit" id = "submit_button">
+            </form>
+            <script>
+                document.addEventListener("DOMContentLoaded",() => {
+                    let rev = document.getElementById("Userin");
+                    rev.addEventListener("focus", (event) =>{
+                        event.rev.style = 'background-color: red;'
+                    } );
+                });
+            </script> -->
+
+            <!-- Question 3 -->
+            <ul id = "imageList">
+                <li><img src = "MyImage.jpg" id = "myImage"/></li>
+                <li><img src = "MyImage.jpg" id = "myImage"/></li>
+                <li><img src = "MyImage.jpg" id = "myImage"/></li>
+            </ul>
+            <script>
+                const images = document.querySelectorAll("#imageList li img");
+                for(let i = 0; i < images.length; i++) {
+                    console.log(images[i].src);
+                }
+            </script>
+
+            
+        </main>
+    </body>
+</html>
